@@ -1,0 +1,40 @@
+public abstract class Goal
+{
+    private string _shortName;
+    private string _description;
+    private int _points;
+
+    protected Goal(string shortName, string description, int points)
+    {
+        _shortName = shortName;
+        _description = description;
+        _points = points;
+    }
+
+    public string GetShortName()
+    {
+        return _shortName;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
+
+    protected string GetBaseStringRepresentation()
+    {
+        return $"{_shortName}|{_description}|{_points}";
+    }
+
+    public abstract int RecordEvent();
+
+    public abstract bool IsComplete();
+
+    public virtual string GetDetailsString()
+    {
+        string checkbox = IsComplete() ? "[X]" : "[ ]";
+        return $"{checkbox} {_shortName} ({_description})";
+    }
+
+    public abstract string GetStringRepresentation();
+}
